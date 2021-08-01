@@ -9,7 +9,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
  * @param <S> the command sender type
  * @param <M> the command manager type
  */
-public abstract class CloudCommandService<S, M extends CommandManager<S>, C extends CloudCommand<S, M>> {
+public abstract class CloudService<S, M extends CommandManager<S>> {
 
     /**
      * The internal {@link CommandManager}.

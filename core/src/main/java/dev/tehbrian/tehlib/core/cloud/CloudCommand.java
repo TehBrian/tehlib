@@ -16,6 +16,6 @@ public abstract class CloudCommand<S, M extends CommandManager<S>> {
      *
      * @param commandManager the command manager
      */
-    public abstract void register(@NonNull M commandManager);
+    public abstract void register(final @NonNull M commandManager);
 
 }
