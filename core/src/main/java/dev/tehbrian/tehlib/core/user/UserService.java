@@ -16,12 +16,12 @@ public abstract class UserService<I, U extends User<I>> {
     protected final @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
 
     /**
-     * Gets the {@code User} associated with that {@code id}.
+     * Gets the {@code User} associated with that {@code uuid}.
      *
-     * @param id the identifier
+     * @param uuid the identifier
      * @return the {@code User}
      */
-    public abstract @NonNull U getUser(final @NonNull I id);
+    public abstract @NonNull U getUser(final @NonNull I uuid);
 
     /**
      * Gets a clone of the internal {@code User} map.

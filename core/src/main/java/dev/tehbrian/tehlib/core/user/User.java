@@ -12,13 +12,13 @@ public abstract class User<I> {
     /**
      * The unique identifier.
      */
-    protected final @NonNull I id;
+    protected final @NonNull I uuid;
 
     /**
-     * @param id the identifier
+     * @param uuid the identifier
      */
-    public User(final @NonNull I id) {
-        this.id = id;
+    public User(final @NonNull I uuid) {
+        this.uuid = uuid;
     }
 
     /**
@@ -26,8 +26,8 @@ public abstract class User<I> {
      *
      * @return the identifier
      */
-    public @NonNull I id() {
-        return id;
+    public @NonNull I uuid() {
+        return uuid;
     }
 
 }
