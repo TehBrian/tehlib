@@ -7,7 +7,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  *
  * @param <I> the identifier type
  */
-public abstract class User<I> {
+public abstract class AbstractUser<I> {
 
     /**
      * The unique identifier.
@@ -17,7 +17,7 @@ public abstract class User<I> {
     /**
      * @param uuid the identifier
      */
-    public User(final @NonNull I uuid) {
+    public AbstractUser(final @NonNull I uuid) {
         this.uuid = uuid;
     }
 

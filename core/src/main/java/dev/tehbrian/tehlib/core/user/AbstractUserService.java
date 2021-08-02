@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Stores and retrieves {@link User} instances.
+ * Stores and retrieves {@link AbstractUser} instances.
  *
  * @param <I> the identifier type
  * @param <U> the user type
  */
-public abstract class UserService<I, U extends User<I>> {
+public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
 
     protected final @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
 
