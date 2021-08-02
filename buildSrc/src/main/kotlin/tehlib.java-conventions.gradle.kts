@@ -7,8 +7,8 @@ plugins {
 }
 
 group = "dev.tehbrian"
-version = "0.1.0"
-description = "Some small, helpful utilites."
+version = "0.1.0-SNAPSHOT"
+description = "Some small, helpful utilities."
 
 repositories {
     mavenCentral()
