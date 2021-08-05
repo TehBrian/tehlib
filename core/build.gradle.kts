@@ -3,5 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation("cloud.commandframework", "cloud-core", "1.5.0")
+    api("org.spongepowered:configurate-core:4.0.0")
+    api("cloud.commandframework", "cloud-core", "1.5.0")
 }
