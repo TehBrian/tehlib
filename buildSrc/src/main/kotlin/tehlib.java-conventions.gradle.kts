@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.slf4j:slf4j-api:2.0.0-alpha1")
+    api("org.apache.logging.log4j:log4j:2.14.1")
 }
 
 indra {
@@ -25,7 +25,7 @@ indra {
 
     mitLicense()
 
-    configurePublications{
+    configurePublications {
         pom {
             url.set("https://github.com/TehBrian/tehlib")
 
