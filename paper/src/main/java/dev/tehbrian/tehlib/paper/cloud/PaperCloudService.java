@@ -9,13 +9,6 @@ import dev.tehbrian.tehlib.core.cloud.AbstractCloudService;
  *
  * @param <S> the command sender type
  */
-public class PaperCloudService<S> extends AbstractCloudService<S, PaperCommandManager<S>> {
-
-    /**
-     * Initializes {@link #commandManager}.
-     */
-    public void init() {
-
-    }
+public abstract class PaperCloudService<S> extends AbstractCloudService<S, PaperCommandManager<S>> {
 
 }
