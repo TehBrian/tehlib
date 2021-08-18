@@ -17,7 +17,7 @@ public abstract class AbstractCloudService<S, M extends CommandManager<S>> {
     protected @Nullable M commandManager;
 
     /**
-     * Initializes {@link #commandManager}.
+     * Instantiates {@link #commandManager}.
      */
     public abstract void init();
 

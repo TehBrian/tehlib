@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * Wraps around a {@link ConfigurationLoader} and provides methods for loading, saving, and getting.
+ * Wraps around a {@link ConfigurationLoader} and provides methods for loading,
+ * saving, and getting the root node.
  *
  * @param <L> the loader type
  */

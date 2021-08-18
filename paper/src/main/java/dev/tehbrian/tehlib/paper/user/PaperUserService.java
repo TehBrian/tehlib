@@ -7,7 +7,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import java.util.UUID;
 
 /**
- * Stores and retrieves {@link PaperUser} instances.
+ * Stores and retrieves user instances.
  *
  * @param <U> the user type
  */

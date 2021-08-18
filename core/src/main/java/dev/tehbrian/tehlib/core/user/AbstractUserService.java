@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Stores and retrieves {@link AbstractUser} instances.
+ * Stores and retrieves user instances.
  *
  * @param <I> the identifier type
  * @param <U> the user type
