@@ -145,7 +145,7 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
     public void load() {
         this.configurateWrapper.load();
 
-        this.logger.info("Successfully loaded all values for the lang!");
+        this.logger.info("Successfully loaded all values for {}!", this.configurateWrapper.filePath().getFileName());
     }
 
 }

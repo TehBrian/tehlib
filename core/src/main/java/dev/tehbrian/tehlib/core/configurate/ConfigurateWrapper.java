@@ -74,4 +74,13 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
         }
     }
 
+    /**
+     * Gets the file path that the loader will load from.
+     *
+     * @return the file path
+     */
+    public @NonNull Path filePath() {
+        return this.filePath;
+    }
+
 }
