@@ -27,7 +27,7 @@ public abstract class AbstractUser<I> {
      * @return the identifier
      */
     public @NonNull I uuid() {
-        return uuid;
+        return this.uuid;
     }
 
 }

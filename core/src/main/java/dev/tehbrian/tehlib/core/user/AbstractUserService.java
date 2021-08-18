@@ -21,7 +21,7 @@ public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
      * @param uuid the identifier
      * @return the {@code User}
      */
-    public abstract @NonNull U getUser(final @NonNull I uuid);
+    public abstract @NonNull U getUser(@NonNull I uuid);
 
     /**
      * Gets a clone of the internal {@code User} map.

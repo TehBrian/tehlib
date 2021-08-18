@@ -14,6 +14,8 @@ import java.util.Map;
 /**
  * Retrieves {@code String}s from a {@link ConfigurateWrapper}
  * and parses them using {@link MiniMessage}.
+ *
+ * @param <W> the wrapper type
  */
 public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> {
 
@@ -136,6 +138,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
         return rawValues;
     }
 
+    /**
+     * Loads the language values from the config.
+     */
     @Override
     public void load() {
         this.configurateWrapper.load();
