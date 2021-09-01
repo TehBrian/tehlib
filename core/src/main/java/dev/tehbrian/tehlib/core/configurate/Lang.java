@@ -41,8 +41,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      * @param path         the config path
      * @param replacements the replacements
      * @return the component
+     * @throws IllegalArgumentException if there is no value found
      */
-    public Component c(final NodePath path, final Map<String, String> replacements) {
+    public Component c(final NodePath path, final Map<String, String> replacements) throws IllegalArgumentException {
         return MiniMessage.get().parse(this.getAndVerifyString(path), replacements);
     }
 
@@ -52,8 +53,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      *
      * @param path the config path
      * @return the component
+     * @throws IllegalArgumentException if there is no value found
      */
-    public Component c(final NodePath path) {
+    public Component c(final NodePath path) throws IllegalArgumentException {
         return MiniMessage.get().parse(this.getAndVerifyString(path));
     }
 
@@ -63,8 +65,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      *
      * @param path the config path
      * @return the components
+     * @throws IllegalArgumentException if there is no value found or if the value is not a list
      */
-    public List<Component> cl(final NodePath path) {
+    public List<Component> cl(final NodePath path) throws IllegalArgumentException {
         final List<Component> components = new ArrayList<>();
 
         for (final String string : this.getAndVerifyStringList(path)) {
@@ -85,8 +88,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      * @param path         the config path
      * @param replacements the replacements
      * @return the components
+     * @throws IllegalArgumentException if there is no value found or if the value is not a list
      */
-    public List<Component> cl(final NodePath path, final Map<String, String> replacements) {
+    public List<Component> cl(final NodePath path, final Map<String, String> replacements) throws IllegalArgumentException {
         final List<Component> components = new ArrayList<>();
 
         for (final String string : this.getAndVerifyStringList(path)) {
@@ -102,8 +106,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      *
      * @param path the path
      * @return the verified string
+     * @throws IllegalArgumentException if there is no value found
      */
-    private String getAndVerifyString(final NodePath path) {
+    private String getAndVerifyString(final NodePath path) throws IllegalArgumentException {
         final String rawValue = this.configurateWrapper.get().node(path).getString();
 
         if (rawValue == null) {
@@ -120,8 +125,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      *
      * @param path the path
      * @return the verified string
+     * @throws IllegalArgumentException if there is no value found or if the value is not a list
      */
-    private List<String> getAndVerifyStringList(final NodePath path) {
+    private List<String> getAndVerifyStringList(final NodePath path) throws IllegalArgumentException {
         final List<String> rawValues;
         try {
             rawValues = this.configurateWrapper.get().node(path).getList(String.class);
@@ -138,9 +144,6 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
         return rawValues;
     }
 
-    /**
-     * Loads the language values from the config.
-     */
     @Override
     public void load() {
         this.configurateWrapper.load();
