@@ -6,9 +6,9 @@ plugins {
     id("net.kyori.indra.publishing")
 }
 
-group = "dev.tehbrian"
-version = "0.1.0-SNAPSHOT"
-description = "Some small, helpful utilities."
+group = rootProject.group
+version = rootProject.version
+description = rootProject.description
 
 repositories {
     mavenCentral()
