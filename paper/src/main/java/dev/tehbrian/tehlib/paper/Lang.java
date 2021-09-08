@@ -1,5 +1,7 @@
-package dev.tehbrian.tehlib.core.configurate;
+package dev.tehbrian.tehlib.paper;
 
+import dev.tehbrian.tehlib.core.configurate.AbstractConfig;
+import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.apache.logging.log4j.Logger;
