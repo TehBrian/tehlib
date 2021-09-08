@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
 
-    protected final @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
+    protected @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
 
     /**
      * Gets the {@code User} associated with that {@code uuid}.
