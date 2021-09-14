@@ -60,11 +60,4 @@ public abstract class TehPlugin extends JavaPlugin {
         this.registerCommand(name, executor, new EmptyTabCompleter());
     }
 
-    /**
-     * Disables this plugin.
-     */
-    public void disableSelf() {
-        this.getServer().getPluginManager().disablePlugin(this);
-    }
-
 }
