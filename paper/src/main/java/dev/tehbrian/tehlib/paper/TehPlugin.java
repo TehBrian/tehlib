@@ -8,6 +8,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import java.io.File;
 import java.util.Objects;
 
 /**
@@ -27,6 +28,27 @@ public abstract class TehPlugin extends JavaPlugin {
         for (final Listener listener : listeners) {
             manager.registerEvents(listener, this);
         }
+    }
+
+    /**
+     * Checks whether the resource already exists before calling
+     * {@link #saveResource(String, boolean)}.
+     *
+     * @param resourcePath the resource path
+     */
+    public void saveResourceSilently(final @NonNull String resourcePath) {
+        final File outFile = new File(this.getDataFolder(), resourcePath);
+
+        if (!outFile.exists()) {
+            this.saveResource(resourcePath, false);
+        }
+    }
+
+    /**
+     * Disables this plugin.
+     */
+    public void disableSelf() {
+        this.setEnabled(false);
     }
 
     /**
