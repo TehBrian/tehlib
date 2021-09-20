@@ -57,7 +57,7 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
         try {
             this.rootNode = this.loader.load();
         } catch (final IOException e) {
-            this.logger.error("Unable to load configuration file {}!", this.filePath.getFileName().toString());
+            this.logger.error("Unable to load configuration file {}", this.filePath.getFileName().toString());
             this.logger.error("Exception: ", e);
         }
     }
@@ -69,7 +69,7 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
         try {
             this.loader.save(this.rootNode);
         } catch (final ConfigurateException e) {
-            this.logger.error("Unable to save configuration file {}!", this.filePath.getFileName().toString());
+            this.logger.error("Unable to save configuration file {}", this.filePath.getFileName().toString());
             this.logger.error("Exception: ", e);
         }
     }

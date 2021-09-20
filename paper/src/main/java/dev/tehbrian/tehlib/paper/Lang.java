@@ -114,7 +114,7 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
         final String rawValue = this.configurateWrapper.get().node(path).getString();
 
         if (rawValue == null) {
-            this.logger.error("Attempted to get value from non-existent config path {}!", path);
+            this.logger.error("Attempted to get value from non-existent config path {}", path);
             throw new IllegalArgumentException("No value found in the config for that given path.");
         }
 
@@ -134,12 +134,12 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
         try {
             rawValues = this.configurateWrapper.get().node(path).getList(String.class);
         } catch (final SerializationException e) {
-            this.logger.error("Attempted to get list of values from non-list config path {}!", path);
+            this.logger.error("Attempted to get list of values from non-list config path {}", path);
             throw new IllegalArgumentException("The given path is not a list.");
         }
 
         if (rawValues == null || rawValues.isEmpty()) {
-            this.logger.error("Attempted to get list of values from non-existent config path {}!", path);
+            this.logger.error("Attempted to get list of values from non-existent config path {}", path);
             throw new IllegalArgumentException("No values found in the config for that given path.");
         }
 
@@ -150,7 +150,7 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
     public void load() {
         this.configurateWrapper.load();
 
-        this.logger.info("Successfully loaded configuration file {}.", this.configurateWrapper.filePath().getFileName().toString());
+        this.logger.info("Successfully loaded configuration file {}", this.configurateWrapper.filePath().getFileName().toString());
     }
 
 }
