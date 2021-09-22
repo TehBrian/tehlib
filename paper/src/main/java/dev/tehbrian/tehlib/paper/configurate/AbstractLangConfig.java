@@ -11,6 +11,7 @@ import org.spongepowered.configurate.NodePath;
 import org.spongepowered.configurate.serialize.SerializationException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -76,6 +77,19 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
     }
 
     /**
+     * Gets the value for {@code path} from {@link #configurateWrapper}
+     * and parses it using {@link MiniMessage}.
+     *
+     * @param path      the config path
+     * @param templates the templates
+     * @return the component
+     * @throws IllegalArgumentException if there is no value found
+     */
+    public Component c(final NodePath path, final Template... templates) throws IllegalArgumentException {
+        return this.c(path, Arrays.asList(templates));
+    }
+
+    /**
      * Gets the values for {@code path} from {@link #configurateWrapper}
      * and parses them using {@link MiniMessage}.
      *
@@ -119,10 +133,6 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
     /**
      * Gets the values for {@code path} from {@link #configurateWrapper}
      * and parses them using {@link MiniMessage}.
-     * <p>
-     * For each entry in {@code replacements}, any substring in the list of parsed
-     * {@code String}s matching the key surrounded with angled brackets, that is
-     * to say {@code <key>}, is replaced with the corresponding value.
      *
      * @param path      the config path
      * @param templates the templates
@@ -137,6 +147,19 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
         }
 
         return components;
+    }
+
+    /**
+     * Gets the values for {@code path} from {@link #configurateWrapper}
+     * and parses them using {@link MiniMessage}.
+     *
+     * @param path      the config path
+     * @param templates the templates
+     * @return the components
+     * @throws IllegalArgumentException if there is no value found or if the value is not a list
+     */
+    public List<Component> cl(final NodePath path, final Template... templates) throws IllegalArgumentException {
+        return this.cl(path, Arrays.asList(templates));
     }
 
     /**
