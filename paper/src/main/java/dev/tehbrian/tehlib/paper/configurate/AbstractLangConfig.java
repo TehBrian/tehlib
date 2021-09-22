@@ -1,9 +1,10 @@
-package dev.tehbrian.tehlib.paper;
+package dev.tehbrian.tehlib.paper.configurate;
 
 import dev.tehbrian.tehlib.core.configurate.AbstractConfig;
 import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.Template;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.NodePath;
@@ -19,17 +20,29 @@ import java.util.Map;
  *
  * @param <W> the wrapper type
  */
-public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> {
+public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> {
 
     /**
      * @param logger             the logger
      * @param configurateWrapper the wrapper
      */
-    public Lang(
+    public AbstractLangConfig(
             final @NonNull Logger logger,
             final @NonNull W configurateWrapper
     ) {
         super(logger, configurateWrapper);
+    }
+
+    /**
+     * Gets the value for {@code path} from {@link #configurateWrapper}
+     * and parses it using {@link MiniMessage}.
+     *
+     * @param path the config path
+     * @return the component
+     * @throws IllegalArgumentException if there is no value found
+     */
+    public Component c(final NodePath path) throws IllegalArgumentException {
+        return MiniMessage.get().parse(this.getAndVerifyString(path));
     }
 
     /**
@@ -53,12 +66,13 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
      * Gets the value for {@code path} from {@link #configurateWrapper}
      * and parses it using {@link MiniMessage}.
      *
-     * @param path the config path
+     * @param path      the config path
+     * @param templates the templates
      * @return the component
      * @throws IllegalArgumentException if there is no value found
      */
-    public Component c(final NodePath path) throws IllegalArgumentException {
-        return MiniMessage.get().parse(this.getAndVerifyString(path));
+    public Component c(final NodePath path, final List<Template> templates) throws IllegalArgumentException {
+        return MiniMessage.get().parse(this.getAndVerifyString(path), templates);
     }
 
     /**
@@ -103,6 +117,29 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
     }
 
     /**
+     * Gets the values for {@code path} from {@link #configurateWrapper}
+     * and parses them using {@link MiniMessage}.
+     * <p>
+     * For each entry in {@code replacements}, any substring in the list of parsed
+     * {@code String}s matching the key surrounded with angled brackets, that is
+     * to say {@code <key>}, is replaced with the corresponding value.
+     *
+     * @param path      the config path
+     * @param templates the templates
+     * @return the components
+     * @throws IllegalArgumentException if there is no value found or if the value is not a list
+     */
+    public List<Component> cl(final NodePath path, final List<Template> templates) throws IllegalArgumentException {
+        final List<Component> components = new ArrayList<>();
+
+        for (final String string : this.getAndVerifyStringList(path)) {
+            components.add(MiniMessage.get().parse(string, templates));
+        }
+
+        return components;
+    }
+
+    /**
      * Gets the value for {@code path} from {@link #configurateWrapper}
      * and verifies that it is not null.
      *
@@ -122,11 +159,11 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
     }
 
     /**
-     * Gets the values for {@code path} from {@link #configurateWrapper}
-     * and verifies that they are not null.
+     * Gets the value for {@code path} from {@link #configurateWrapper}
+     * and verifies it is not null.
      *
      * @param path the path
-     * @return the verified string
+     * @return the verified string list
      * @throws IllegalArgumentException if there is no value found or if the value is not a list
      */
     private List<String> getAndVerifyStringList(final NodePath path) throws IllegalArgumentException {
@@ -146,6 +183,9 @@ public abstract class Lang<W extends ConfigurateWrapper<?>> extends AbstractConf
         return rawValues;
     }
 
+    /**
+     * Loads the values from the {@link #configurateWrapper} into memory.
+     */
     @Override
     public void load() {
         this.configurateWrapper.load();
