@@ -43,7 +43,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @throws IllegalArgumentException if there is no value found
      */
     public Component c(final NodePath path) throws IllegalArgumentException {
-        return MiniMessage.get().parse(this.getAndVerifyString(path));
+        return MiniMessage.miniMessage().parse(this.getAndVerifyString(path));
     }
 
     /**
@@ -60,7 +60,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @throws IllegalArgumentException if there is no value found
      */
     public Component c(final NodePath path, final Map<String, String> replacements) throws IllegalArgumentException {
-        return MiniMessage.get().parse(this.getAndVerifyString(path), replacements);
+        return MiniMessage.miniMessage().parse(this.getAndVerifyString(path), replacements);
     }
 
     /**
@@ -73,7 +73,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @throws IllegalArgumentException if there is no value found
      */
     public Component c(final NodePath path, final List<Template> templates) throws IllegalArgumentException {
-        return MiniMessage.get().parse(this.getAndVerifyString(path), templates);
+        return MiniMessage.miniMessage().parse(this.getAndVerifyString(path), templates);
     }
 
     /**
@@ -101,7 +101,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
         final List<Component> components = new ArrayList<>();
 
         for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.get().parse(string));
+            components.add(MiniMessage.miniMessage().parse(string));
         }
 
         return components;
@@ -124,7 +124,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
         final List<Component> components = new ArrayList<>();
 
         for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.get().parse(string, replacements));
+            components.add(MiniMessage.miniMessage().parse(string, replacements));
         }
 
         return components;
@@ -143,7 +143,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
         final List<Component> components = new ArrayList<>();
 
         for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.get().parse(string, templates));
+            components.add(MiniMessage.miniMessage().parse(string, templates));
         }
 
         return components;
