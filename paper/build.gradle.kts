@@ -3,8 +3,8 @@ plugins {
 }
 
 repositories {
-    maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
+    maven("https://papermc.io/repo/repository/maven-public/") {
+        name = "papermc"
     }
 }
 
@@ -13,8 +13,6 @@ dependencies {
 
     api("cloud.commandframework", "cloud-paper", "1.5.0")
     api("net.kyori:adventure-text-minimessage:4.2.0-SNAPSHOT")
-
-    api("com.google.inject:guice:5.0.1")
 
     compileOnly("io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT")
 }
