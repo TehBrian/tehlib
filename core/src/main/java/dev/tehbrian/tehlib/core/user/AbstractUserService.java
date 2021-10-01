@@ -13,6 +13,7 @@ import java.util.Map;
  */
 public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
 
+    @SuppressWarnings("CanBeFinal") // some programs may need to change the user map
     protected @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
 
     /**
