@@ -1,6 +1,7 @@
 package dev.tehbrian.tehlib.paper.configurate;
 
 import dev.tehbrian.tehlib.core.configurate.AbstractConfig;
+import dev.tehbrian.tehlib.core.configurate.AbstractRawConfig;
 import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -21,17 +22,20 @@ import java.util.Map;
  *
  * @param <W> the wrapper type
  */
-public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> {
+public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extends AbstractRawConfig<W> {
+
+    private final Logger logger;
 
     /**
-     * @param logger             the logger
      * @param configurateWrapper the wrapper
+     * @param logger             the logger
      */
     public AbstractLangConfig(
-            final @NonNull Logger logger,
-            final @NonNull W configurateWrapper
+            final @NonNull W configurateWrapper,
+            final @NonNull Logger logger
     ) {
-        super(logger, configurateWrapper);
+        super(configurateWrapper);
+        this.logger = logger;
     }
 
     /**
@@ -171,7 +175,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @throws IllegalArgumentException if there is no value found
      */
     private String getAndVerifyString(final NodePath path) throws IllegalArgumentException {
-        final String rawValue = this.configurateWrapper.get().node(path).getString();
+        final String rawValue = this.rootNode().node(path).getString();
 
         if (rawValue == null) {
             this.logger.error("Attempted to get value from non-existent config path {}", path);
@@ -192,7 +196,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
     private List<String> getAndVerifyStringList(final NodePath path) throws IllegalArgumentException {
         final List<String> rawValues;
         try {
-            rawValues = this.configurateWrapper.get().node(path).getList(String.class);
+            rawValues = this.rootNode().node(path).getList(String.class);
         } catch (final SerializationException e) {
             this.logger.error("Attempted to get list of values from non-list config path {}", path);
             throw new IllegalArgumentException("The given path is not a list.");
@@ -204,16 +208,6 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
         }
 
         return rawValues;
-    }
-
-    /**
-     * Loads the values from the {@link #configurateWrapper} into memory.
-     */
-    @Override
-    public void load() {
-        this.configurateWrapper.load();
-
-        this.logger.info("Successfully loaded configuration file {}", this.configurateWrapper.filePath().getFileName().toString());
     }
 
 }
