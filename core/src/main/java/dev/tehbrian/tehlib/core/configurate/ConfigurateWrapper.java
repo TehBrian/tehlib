@@ -1,12 +1,12 @@
 package dev.tehbrian.tehlib.core.configurate;
 
-import org.apache.logging.log4j.Logger;
+import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
 
-import java.io.IOException;
 import java.nio.file.Path;
 
 /**
@@ -17,61 +17,41 @@ import java.nio.file.Path;
  */
 public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigurationNode>> {
 
-    private final Logger logger;
-    private final Path filePath;
-    private final L loader;
+    private final @NonNull Path filePath;
+    private final @MonotonicNonNull L loader;
 
     private CommentedConfigurationNode rootNode;
 
     /**
-     * @param logger   the logger
      * @param filePath the file path for the config
      * @param loader   the loader
      */
-    public ConfigurateWrapper(
-            final @NonNull Logger logger,
-            final @NonNull Path filePath,
-            final @NonNull L loader
-    ) {
-        this.logger = logger;
+    public ConfigurateWrapper(final @NonNull Path filePath, final @NonNull L loader) {
         this.filePath = filePath;
         this.loader = loader;
     }
 
     /**
-     * Gets the root node. Loads it if not already loaded.
+     * Gets the root node. Will be null if {@link #load()} has not been called.
      *
      * @return the root node
      */
-    public @NonNull CommentedConfigurationNode get() {
-        if (this.rootNode == null) {
-            this.load();
-        }
+    public @Nullable CommentedConfigurationNode get() {
         return this.rootNode;
     }
 
     /**
      * Loads the root node from the file system.
      */
-    public void load() {
-        try {
-            this.rootNode = this.loader.load();
-        } catch (final IOException e) {
-            this.logger.error("Unable to load configuration file {}", this.filePath.getFileName().toString());
-            this.logger.error("Exception: ", e);
-        }
+    public void load() throws ConfigurateException {
+        this.rootNode = this.loader.load();
     }
 
     /**
      * Saves the root node to the file system.
      */
-    public void save() {
-        try {
-            this.loader.save(this.rootNode);
-        } catch (final ConfigurateException e) {
-            this.logger.error("Unable to save configuration file {}", this.filePath.getFileName().toString());
-            this.logger.error("Exception: ", e);
-        }
+    public void save() throws ConfigurateException {
+        this.loader.save(this.rootNode);
     }
 
     /**
