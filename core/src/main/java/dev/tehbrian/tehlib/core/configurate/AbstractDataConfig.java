@@ -1,4 +1,4 @@
-package dev.tehbrian.tehlib.paper.configurate;
+package dev.tehbrian.tehlib.core.configurate;
 
 import dev.tehbrian.tehlib.core.configurate.AbstractConfig;
 import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
@@ -30,23 +30,17 @@ public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D> ext
             this.data = rootNode.get(this.getDataClass());
         } catch (final SerializationException e) {
             this.logger.warn("Exception caught during configuration deserialization for {}", fileName);
-            this.logger.warn("Disabling plugin. Please check your {}", fileName);
-            this.disablePlugin();
             this.logger.warn("Printing stack trace:", e);
             return;
         }
 
         if (this.data == null) {
             this.logger.warn("The deserialized configuration for {} was null.", fileName);
-            this.logger.warn("Disabling plugin. Please check your {}", fileName);
-            this.disablePlugin();
             return;
         }
 
         this.logger.info("Successfully loaded configuration file {}", fileName);
     }
-
-    protected abstract void disablePlugin();
 
     protected abstract Class<D> getDataClass();
 
