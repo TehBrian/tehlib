@@ -1,14 +1,14 @@
 package dev.tehbrian.tehlib.core.configurate;
 
-import dev.tehbrian.tehlib.core.configurate.AbstractConfig;
-import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.serialize.SerializationException;
 
-public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D> extends AbstractConfig<W> {
+import java.util.Objects;
+
+public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D> extends AbstractConfig<W> implements DataConfig<D> {
 
     protected @Nullable D data;
 
@@ -49,8 +49,8 @@ public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D> ext
      *
      * @return the data
      */
-    public @Nullable D data() {
-        return this.data;
+    public @NonNull D data() {
+        return Objects.requireNonNull(this.data, "Tried to get data but it was null");
     }
 
 }

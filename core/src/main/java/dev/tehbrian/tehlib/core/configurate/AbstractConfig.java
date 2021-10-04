@@ -17,10 +17,7 @@ public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> {
      * @param logger             the logger
      * @param configurateWrapper the wrapper
      */
-    public AbstractConfig(
-            final @NonNull Logger logger,
-            final @NonNull W configurateWrapper
-    ) {
+    public AbstractConfig(final @NonNull Logger logger, final @NonNull W configurateWrapper) {
         this.logger = logger;
         this.configurateWrapper = configurateWrapper;
     }

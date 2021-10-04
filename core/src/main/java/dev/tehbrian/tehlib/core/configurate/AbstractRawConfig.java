@@ -5,7 +5,9 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
-public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> {
+import java.util.Objects;
+
+public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> implements RawConfig {
 
     /**
      * @param logger             the logger
@@ -30,8 +32,8 @@ public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>> extends
      *
      * @return the root node
      */
-    public @Nullable CommentedConfigurationNode rootNode() {
-        return this.configurateWrapper.get();
+    public @NonNull CommentedConfigurationNode rootNode() {
+        return Objects.requireNonNull(this.configurateWrapper.get(), "Tried to get root node but it was null");
     }
 
 }
