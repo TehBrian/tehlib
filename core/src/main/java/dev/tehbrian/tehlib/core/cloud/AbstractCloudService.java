@@ -1,7 +1,7 @@
 package dev.tehbrian.tehlib.core.cloud;
 
 import cloud.commandframework.CommandManager;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 
 /**
  * Manages a {@link CommandManager} instance.
@@ -14,7 +14,7 @@ public abstract class AbstractCloudService<S, M extends CommandManager<S>> {
     /**
      * The internal {@link CommandManager}.
      */
-    protected @Nullable M commandManager;
+    protected @MonotonicNonNull M commandManager;
 
     /**
      * Instantiates {@link #commandManager}.
@@ -26,7 +26,7 @@ public abstract class AbstractCloudService<S, M extends CommandManager<S>> {
      *
      * @return the command manager
      */
-    public @Nullable M get() {
+    public @MonotonicNonNull M get() {
         return this.commandManager;
     }
 
