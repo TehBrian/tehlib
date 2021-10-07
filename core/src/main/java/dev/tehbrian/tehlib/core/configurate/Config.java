@@ -14,4 +14,11 @@ public interface Config {
      */
     void load() throws ConfigurateException;
 
+    /**
+     * Gets the underlying configurate wrapper.
+     *
+     * @return the configurate wrapper
+     */
+    ConfigurateWrapper<?> configurateWrapper();
+
 }
