@@ -8,7 +8,7 @@ import org.spongepowered.configurate.ConfigurateException;
  *
  * @param <W> the wrapper type
  */
-public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> {
+public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> implements Config {
 
     protected final @NonNull W configurateWrapper;
 
