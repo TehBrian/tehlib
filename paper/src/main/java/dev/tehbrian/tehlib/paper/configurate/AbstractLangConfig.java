@@ -1,20 +1,17 @@
 package dev.tehbrian.tehlib.paper.configurate;
 
-import dev.tehbrian.tehlib.core.configurate.AbstractConfig;
 import dev.tehbrian.tehlib.core.configurate.AbstractRawConfig;
 import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.template.TemplateResolver;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.NodePath;
 import org.spongepowered.configurate.serialize.SerializationException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Retrieves {@code String}s from a {@link ConfigurateWrapper}
@@ -42,55 +39,44 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * Gets the value for {@code path} from {@link #configurateWrapper}
      * and parses it using {@link MiniMessage}.
      *
+     * @param path             the config path
+     * @param templateResolver the template resolver
+     * @return the component
+     * @throws IllegalArgumentException if there is no value found
+     */
+    public Component c(final NodePath path, final TemplateResolver templateResolver) throws IllegalArgumentException {
+        return MiniMessage.miniMessage().deserialize(this.getAndVerifyString(path), templateResolver);
+    }
+
+    /**
+     * Gets the value for {@code path} from {@link #configurateWrapper}
+     * and parses it using {@link MiniMessage}.
+     *
      * @param path the config path
      * @return the component
      * @throws IllegalArgumentException if there is no value found
      */
     public Component c(final NodePath path) throws IllegalArgumentException {
-        return MiniMessage.miniMessage().parse(this.getAndVerifyString(path));
+        return this.c(path, TemplateResolver.empty());
     }
 
     /**
-     * Gets the value for {@code path} from {@link #configurateWrapper}
-     * and parses it using {@link MiniMessage}.
-     * <p>
-     * For each entry in {@code replacements}, any substring in the parsed
-     * {@code String} matching the key surrounded with angled brackets, that is
-     * to say {@code <key>}, is replaced with the corresponding value.
+     * Gets the values for {@code path} from {@link #configurateWrapper}
+     * and parses them using {@link MiniMessage}.
      *
-     * @param path         the config path
-     * @param replacements the replacements
-     * @return the component
-     * @throws IllegalArgumentException if there is no value found
+     * @param path             the config path
+     * @param templateResolver the template resolver
+     * @return the components
+     * @throws IllegalArgumentException if there is no value found or if the value is not a list
      */
-    public Component c(final NodePath path, final Map<String, String> replacements) throws IllegalArgumentException {
-        return MiniMessage.miniMessage().parse(this.getAndVerifyString(path), replacements);
-    }
+    public List<Component> cl(final NodePath path, final TemplateResolver templateResolver) throws IllegalArgumentException {
+        final List<Component> components = new ArrayList<>();
 
-    /**
-     * Gets the value for {@code path} from {@link #configurateWrapper}
-     * and parses it using {@link MiniMessage}.
-     *
-     * @param path      the config path
-     * @param templates the templates
-     * @return the component
-     * @throws IllegalArgumentException if there is no value found
-     */
-    public Component c(final NodePath path, final List<Template> templates) throws IllegalArgumentException {
-        return MiniMessage.miniMessage().parse(this.getAndVerifyString(path), templates);
-    }
+        for (final String string : this.getAndVerifyStringList(path)) {
+            components.add(MiniMessage.miniMessage().deserialize(string, templateResolver));
+        }
 
-    /**
-     * Gets the value for {@code path} from {@link #configurateWrapper}
-     * and parses it using {@link MiniMessage}.
-     *
-     * @param path      the config path
-     * @param templates the templates
-     * @return the component
-     * @throws IllegalArgumentException if there is no value found
-     */
-    public Component c(final NodePath path, final Template... templates) throws IllegalArgumentException {
-        return this.c(path, Arrays.asList(templates));
+        return components;
     }
 
     /**
@@ -102,68 +88,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @throws IllegalArgumentException if there is no value found or if the value is not a list
      */
     public List<Component> cl(final NodePath path) throws IllegalArgumentException {
-        final List<Component> components = new ArrayList<>();
-
-        for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.miniMessage().parse(string));
-        }
-
-        return components;
-    }
-
-    /**
-     * Gets the values for {@code path} from {@link #configurateWrapper}
-     * and parses them using {@link MiniMessage}.
-     * <p>
-     * For each entry in {@code replacements}, any substring in the list of parsed
-     * {@code String}s matching the key surrounded with angled brackets, that is
-     * to say {@code <key>}, is replaced with the corresponding value.
-     *
-     * @param path         the config path
-     * @param replacements the replacements
-     * @return the components
-     * @throws IllegalArgumentException if there is no value found or if the value is not a list
-     */
-    public List<Component> cl(final NodePath path, final Map<String, String> replacements) throws IllegalArgumentException {
-        final List<Component> components = new ArrayList<>();
-
-        for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.miniMessage().parse(string, replacements));
-        }
-
-        return components;
-    }
-
-    /**
-     * Gets the values for {@code path} from {@link #configurateWrapper}
-     * and parses them using {@link MiniMessage}.
-     *
-     * @param path      the config path
-     * @param templates the templates
-     * @return the components
-     * @throws IllegalArgumentException if there is no value found or if the value is not a list
-     */
-    public List<Component> cl(final NodePath path, final List<Template> templates) throws IllegalArgumentException {
-        final List<Component> components = new ArrayList<>();
-
-        for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.miniMessage().parse(string, templates));
-        }
-
-        return components;
-    }
-
-    /**
-     * Gets the values for {@code path} from {@link #configurateWrapper}
-     * and parses them using {@link MiniMessage}.
-     *
-     * @param path      the config path
-     * @param templates the templates
-     * @return the components
-     * @throws IllegalArgumentException if there is no value found or if the value is not a list
-     */
-    public List<Component> cl(final NodePath path, final Template... templates) throws IllegalArgumentException {
-        return this.cl(path, Arrays.asList(templates));
+        return this.cl(path, TemplateResolver.empty());
     }
 
     /**
