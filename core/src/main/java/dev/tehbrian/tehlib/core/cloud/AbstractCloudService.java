@@ -18,8 +18,10 @@ public abstract class AbstractCloudService<S, M extends CommandManager<S>> {
 
     /**
      * Instantiates {@link #commandManager}.
+     *
+     * @throws Exception if something goes wrong during instantiation
      */
-    public abstract void init();
+    public abstract void init() throws Exception;
 
     /**
      * Gets the internal {@code CommandManager}.
