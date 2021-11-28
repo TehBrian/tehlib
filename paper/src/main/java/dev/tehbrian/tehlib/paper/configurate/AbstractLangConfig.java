@@ -8,10 +8,6 @@ import net.kyori.adventure.text.minimessage.template.TemplateResolver;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.NodePath;
-import org.spongepowered.configurate.serialize.SerializationException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Retrieves {@code String}s from a {@link ConfigurateWrapper}
@@ -61,37 +57,6 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
     }
 
     /**
-     * Gets the values for {@code path} from {@link #configurateWrapper}
-     * and parses them using {@link MiniMessage}.
-     *
-     * @param path             the config path
-     * @param templateResolver the template resolver
-     * @return the components
-     * @throws IllegalArgumentException if there is no value found or if the value is not a list
-     */
-    public List<Component> cl(final NodePath path, final TemplateResolver templateResolver) throws IllegalArgumentException {
-        final List<Component> components = new ArrayList<>();
-
-        for (final String string : this.getAndVerifyStringList(path)) {
-            components.add(MiniMessage.miniMessage().deserialize(string, templateResolver));
-        }
-
-        return components;
-    }
-
-    /**
-     * Gets the values for {@code path} from {@link #configurateWrapper}
-     * and parses them using {@link MiniMessage}.
-     *
-     * @param path the config path
-     * @return the components
-     * @throws IllegalArgumentException if there is no value found or if the value is not a list
-     */
-    public List<Component> cl(final NodePath path) throws IllegalArgumentException {
-        return this.cl(path, TemplateResolver.empty());
-    }
-
-    /**
      * Gets the value for {@code path} from {@link #configurateWrapper}
      * and verifies that it is not null.
      *
@@ -108,31 +73,6 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
         }
 
         return rawValue;
-    }
-
-    /**
-     * Gets the value for {@code path} from {@link #configurateWrapper}
-     * and verifies it is not null.
-     *
-     * @param path the path
-     * @return the verified string list
-     * @throws IllegalArgumentException if there is no value found or if the value is not a list
-     */
-    private List<String> getAndVerifyStringList(final NodePath path) throws IllegalArgumentException {
-        final List<String> rawValues;
-        try {
-            rawValues = this.rootNode().node(path).getList(String.class);
-        } catch (final SerializationException e) {
-            this.logger.error("Attempted to get list of values from non-list config path {}", path);
-            throw new IllegalArgumentException("The given path is not a list.");
-        }
-
-        if (rawValues == null || rawValues.isEmpty()) {
-            this.logger.error("Attempted to get list of values from non-existent config path {}", path);
-            throw new IllegalArgumentException("No values found in the config for that given path.");
-        }
-
-        return rawValues;
     }
 
 }
