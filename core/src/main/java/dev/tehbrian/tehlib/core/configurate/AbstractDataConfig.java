@@ -26,7 +26,8 @@ public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D> ext
     @Override
     public void load() throws ConfigurateException {
         this.configurateWrapper.load();
-        final @NonNull CommentedConfigurationNode rootNode = Objects.requireNonNull(this.configurateWrapper.get()); // will not be null as we called #load()
+        // will not be null as we called #load()
+        final @NonNull CommentedConfigurationNode rootNode = Objects.requireNonNull(this.configurateWrapper.get());
         this.data = Objects.requireNonNull(rootNode.get(this.getDataClass()), "Deserialized data is null");
     }
 
