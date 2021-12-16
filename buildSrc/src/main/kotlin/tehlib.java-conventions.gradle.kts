@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    api("org.apache.logging.log4j", "log4j-core", "2.15.0")
+    api("org.apache.logging.log4j", "log4j-core", "2.16.0")
 }
 
 indra {
