@@ -64,7 +64,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @return the verified string
      * @throws IllegalArgumentException if there is no value found
      */
-    private String getAndVerifyString(final NodePath path) throws IllegalArgumentException {
+    protected String getAndVerifyString(final NodePath path) throws IllegalArgumentException {
         final String rawValue = this.rootNode().node(path).getString();
 
         if (rawValue == null) {
