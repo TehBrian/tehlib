@@ -4,7 +4,7 @@ import dev.tehbrian.tehlib.core.configurate.AbstractRawConfig;
 import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.placeholder.PlaceholderResolver;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.NodePath;
@@ -35,13 +35,13 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * Gets the value for {@code path} from {@link #configurateWrapper}
      * and parses it using {@link MiniMessage}.
      *
-     * @param path             the config path
-     * @param placeholderResolver the placeholder resolver
+     * @param path        the config path
+     * @param tagResolver the tag resolver
      * @return the component
      * @throws IllegalArgumentException if there is no value found
      */
-    public Component c(final NodePath path, final PlaceholderResolver placeholderResolver) throws IllegalArgumentException {
-        return MiniMessage.miniMessage().deserialize(this.getAndVerifyString(path), placeholderResolver);
+    public Component c(final NodePath path, final TagResolver tagResolver) throws IllegalArgumentException {
+        return MiniMessage.miniMessage().deserialize(this.getAndVerifyString(path), tagResolver);
     }
 
     /**
@@ -53,7 +53,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @throws IllegalArgumentException if there is no value found
      */
     public Component c(final NodePath path) throws IllegalArgumentException {
-        return this.c(path, PlaceholderResolver.empty());
+        return this.c(path, TagResolver.empty());
     }
 
     /**
