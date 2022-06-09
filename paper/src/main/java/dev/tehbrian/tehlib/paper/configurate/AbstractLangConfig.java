@@ -32,9 +32,9 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      * @param path        the config path
      * @param tagResolver the tag resolver
      * @return the component
-     * @throws IllegalArgumentException if there is no value found
+     * @throws NoSuchValueAtPathInConfigException if there is no value found at the specified path
      */
-    public Component c(final NodePath path, final TagResolver tagResolver) throws IllegalArgumentException {
+    public Component c(final NodePath path, final TagResolver tagResolver) throws NoSuchValueAtPathInConfigException {
         return MiniMessage.miniMessage().deserialize(this.getAndVerifyString(path), tagResolver);
     }
 
@@ -44,9 +44,9 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      *
      * @param path the config path
      * @return the component
-     * @throws IllegalArgumentException if there is no value found
+     * @throws NoSuchValueAtPathInConfigException if there is no value found at the specified path
      */
-    public Component c(final NodePath path) throws IllegalArgumentException {
+    public Component c(final NodePath path) throws NoSuchValueAtPathInConfigException {
         return this.c(path, TagResolver.empty());
     }
 
