@@ -5,7 +5,6 @@ import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
-import org.apache.logging.log4j.Logger;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.NodePath;
 
@@ -17,18 +16,13 @@ import org.spongepowered.configurate.NodePath;
  */
 public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extends AbstractRawConfig<W> {
 
-    private final Logger logger;
-
     /**
      * @param configurateWrapper the wrapper
-     * @param logger             the logger
      */
     public AbstractLangConfig(
-            final @NonNull W configurateWrapper,
-            final @NonNull Logger logger
+            final @NonNull W configurateWrapper
     ) {
         super(configurateWrapper);
-        this.logger = logger;
     }
 
     /**
