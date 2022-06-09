@@ -2,6 +2,10 @@ plugins {
     id("tehlib.java-conventions")
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     api(project(":tehlib-core"))
 

@@ -9,14 +9,6 @@ group = rootProject.group
 version = rootProject.version
 description = rootProject.description
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    api("org.apache.logging.log4j", "log4j-core", "2.17.2")
-}
-
 indra {
     javaVersions {
         target(17)
