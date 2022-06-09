@@ -62,14 +62,14 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
      *
      * @param path the path
      * @return the verified string
-     * @throws IllegalArgumentException if there is no value found
+     * @throws NoSuchValueAtPathInConfigException if there is no value found at the specified path
      */
-    protected String getAndVerifyString(final NodePath path) throws IllegalArgumentException {
+    protected String getAndVerifyString(final NodePath path) throws NoSuchValueAtPathInConfigException {
         final String rawValue = this.rootNode().node(path).getString();
 
         if (rawValue == null) {
-            this.logger.error("Attempted to get value from non-existent config path {}", path);
-            throw new IllegalArgumentException("No value found in the config for that given path.");
+            throw new NoSuchValueAtPathInConfigException("Attempted to get value at path " + path + " in config "
+                    + configurateWrapper.filePath().getFileName() + " but found nothing.");
         }
 
         return rawValue;
