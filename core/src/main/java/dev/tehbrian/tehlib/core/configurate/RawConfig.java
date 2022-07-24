@@ -5,11 +5,11 @@ import org.spongepowered.configurate.CommentedConfigurationNode;
 
 public interface RawConfig {
 
-    /**
-     * Gets the root node.
-     *
-     * @return the root node
-     */
-    @NonNull CommentedConfigurationNode rootNode();
+  /**
+   * Gets the root node.
+   *
+   * @return the root node
+   */
+  @NonNull CommentedConfigurationNode rootNode();
 
 }

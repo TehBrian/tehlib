@@ -11,25 +11,25 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
  */
 public abstract class AbstractCloudService<S, M extends CommandManager<S>> {
 
-    /**
-     * The internal {@link CommandManager}.
-     */
-    protected @MonotonicNonNull M commandManager;
+  /**
+   * The internal {@link CommandManager}.
+   */
+  protected @MonotonicNonNull M commandManager;
 
-    /**
-     * Instantiates {@link #commandManager}.
-     *
-     * @throws Exception if something goes wrong during instantiation
-     */
-    public abstract void init() throws Exception;
+  /**
+   * Instantiates {@link #commandManager}.
+   *
+   * @throws Exception if something goes wrong during instantiation
+   */
+  public abstract void init() throws Exception;
 
-    /**
-     * Gets the internal {@code CommandManager}.
-     *
-     * @return the command manager
-     */
-    public @MonotonicNonNull M get() {
-        return this.commandManager;
-    }
+  /**
+   * Gets the internal {@code CommandManager}.
+   *
+   * @return the command manager
+   */
+  public @MonotonicNonNull M get() {
+    return this.commandManager;
+  }
 
 }

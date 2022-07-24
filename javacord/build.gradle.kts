@@ -1,14 +1,14 @@
 plugins {
-    id("tehlib.java-conventions")
+  id("tehlib.java-conventions")
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    api(project(":tehlib-core"))
+  api(project(":tehlib-core"))
 
-    api("cloud.commandframework", "cloud-javacord", "1.7.0")
-    api("org.javacord:javacord:3.5.0")
+  api("cloud.commandframework", "cloud-javacord", "1.7.0")
+  api("org.javacord:javacord:3.5.0")
 }

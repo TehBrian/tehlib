@@ -7,18 +7,18 @@ import org.spongepowered.configurate.ConfigurateException;
  */
 public interface Config {
 
-    /**
-     * Loads the values into memory.
-     *
-     * @throws ConfigurateException if something goes wrong
-     */
-    void load() throws ConfigurateException;
+  /**
+   * Loads the values into memory.
+   *
+   * @throws ConfigurateException if something goes wrong
+   */
+  void load() throws ConfigurateException;
 
-    /**
-     * Gets the underlying configurate wrapper.
-     *
-     * @return the configurate wrapper
-     */
-    ConfigurateWrapper<?> configurateWrapper();
+  /**
+   * Gets the underlying configurate wrapper.
+   *
+   * @return the configurate wrapper
+   */
+  ConfigurateWrapper<?> configurateWrapper();
 
 }

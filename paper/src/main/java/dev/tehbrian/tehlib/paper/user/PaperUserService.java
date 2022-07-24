@@ -13,14 +13,14 @@ import java.util.UUID;
  */
 public abstract class PaperUserService<U extends PaperUser> extends AbstractUserService<UUID, U> {
 
-    /**
-     * Gets the {@code User} associated with that {@code Player}'s {@code uuid}.
-     *
-     * @param player the player
-     * @return the {@code User}
-     */
-    public @NonNull U getUser(final @NonNull Player player) {
-        return this.getUser(player.getUniqueId());
-    }
+  /**
+   * Gets the {@code User} associated with that {@code Player}'s {@code uuid}.
+   *
+   * @param player the player
+   * @return the {@code User}
+   */
+  public @NonNull U getUser(final @NonNull Player player) {
+    return this.getUser(player.getUniqueId());
+  }
 
 }

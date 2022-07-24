@@ -17,50 +17,50 @@ import java.nio.file.Path;
  */
 public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigurationNode>> {
 
-    private final @NonNull Path filePath;
-    private final @MonotonicNonNull L loader;
+  private final @NonNull Path filePath;
+  private final @MonotonicNonNull L loader;
 
-    private CommentedConfigurationNode rootNode;
+  private CommentedConfigurationNode rootNode;
 
-    /**
-     * @param filePath the file path for the config
-     * @param loader   the loader
-     */
-    public ConfigurateWrapper(final @NonNull Path filePath, final @NonNull L loader) {
-        this.filePath = filePath;
-        this.loader = loader;
-    }
+  /**
+   * @param filePath the file path for the config
+   * @param loader   the loader
+   */
+  public ConfigurateWrapper(final @NonNull Path filePath, final @NonNull L loader) {
+    this.filePath = filePath;
+    this.loader = loader;
+  }
 
-    /**
-     * Gets the root node. Will be null if {@link #load()} has not been called.
-     *
-     * @return the root node
-     */
-    public @Nullable CommentedConfigurationNode get() {
-        return this.rootNode;
-    }
+  /**
+   * Gets the root node. Will be null if {@link #load()} has not been called.
+   *
+   * @return the root node
+   */
+  public @Nullable CommentedConfigurationNode get() {
+    return this.rootNode;
+  }
 
-    /**
-     * Loads the root node from the file system.
-     */
-    public void load() throws ConfigurateException {
-        this.rootNode = this.loader.load();
-    }
+  /**
+   * Loads the root node from the file system.
+   */
+  public void load() throws ConfigurateException {
+    this.rootNode = this.loader.load();
+  }
 
-    /**
-     * Saves the root node to the file system.
-     */
-    public void save() throws ConfigurateException {
-        this.loader.save(this.rootNode);
-    }
+  /**
+   * Saves the root node to the file system.
+   */
+  public void save() throws ConfigurateException {
+    this.loader.save(this.rootNode);
+  }
 
-    /**
-     * Gets the file path that the loader will load from.
-     *
-     * @return the file path
-     */
-    public @NonNull Path filePath() {
-        return this.filePath;
-    }
+  /**
+   * Gets the file path that the loader will load from.
+   *
+   * @return the file path
+   */
+  public @NonNull Path filePath() {
+    return this.filePath;
+  }
 
 }

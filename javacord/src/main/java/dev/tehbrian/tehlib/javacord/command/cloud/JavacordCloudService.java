@@ -8,7 +8,7 @@ import dev.tehbrian.tehlib.core.cloud.AbstractCloudService;
 /**
  * Manages a {@link CommandManager} instance.
  */
-public abstract class JavacordCloudService extends
-        AbstractCloudService<JavacordCommandSender, JavacordCommandManager<JavacordCommandSender>> {
+public abstract class JavacordCloudService
+    extends AbstractCloudService<JavacordCommandSender, JavacordCommandManager<JavacordCommandSender>> {
 
 }

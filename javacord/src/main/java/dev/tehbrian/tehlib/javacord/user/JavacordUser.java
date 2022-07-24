@@ -7,11 +7,11 @@ import dev.tehbrian.tehlib.core.user.AbstractUser;
  */
 public class JavacordUser extends AbstractUser<Long> {
 
-    /**
-     * @param discordId the discord id
-     */
-    public JavacordUser(final Long discordId) {
-        super(discordId);
-    }
+  /**
+   * @param discordId the discord id
+   */
+  public JavacordUser(final Long discordId) {
+    super(discordId);
+  }
 
 }

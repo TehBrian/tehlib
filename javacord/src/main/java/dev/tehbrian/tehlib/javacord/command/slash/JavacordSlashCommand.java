@@ -8,25 +8,25 @@ import org.javacord.api.DiscordApi;
  */
 public abstract class JavacordSlashCommand {
 
-    protected final DiscordApi discordApi;
+  protected final DiscordApi discordApi;
 
-    /**
-     * @param discordApi the discord api
-     */
-    public JavacordSlashCommand(final @NonNull DiscordApi discordApi) {
-        this.discordApi = discordApi;
-    }
+  /**
+   * @param discordApi the discord api
+   */
+  public JavacordSlashCommand(final @NonNull DiscordApi discordApi) {
+    this.discordApi = discordApi;
+  }
 
-    /**
-     * Creates the slash command.
-     *
-     * <b>NOTE: This should only be used ONCE every so often, NOT on start-up!</b>
-     */
-    public abstract void create();
+  /**
+   * Creates the slash command.
+   *
+   * <b>NOTE: This should only be used ONCE every so often, NOT on start-up!</b>
+   */
+  public abstract void create();
 
-    /**
-     * Registers the listeners for the slash command.
-     */
-    public abstract void register();
+  /**
+   * Registers the listeners for the slash command.
+   */
+  public abstract void register();
 
 }

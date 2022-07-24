@@ -13,24 +13,24 @@ import java.util.Map;
  */
 public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
 
-    @SuppressWarnings("CanBeFinal") // some programs may need to change the user map
-    protected @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
+  @SuppressWarnings("CanBeFinal") // some programs may need to change the user map
+  protected @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
 
-    /**
-     * Gets the {@code User} associated with that {@code uuid}.
-     *
-     * @param uuid the identifier
-     * @return the {@code User}
-     */
-    public abstract @NonNull U getUser(@NonNull I uuid);
+  /**
+   * Gets the {@code User} associated with that {@code uuid}.
+   *
+   * @param uuid the identifier
+   * @return the {@code User}
+   */
+  public abstract @NonNull U getUser(@NonNull I uuid);
 
-    /**
-     * Gets a clone of the internal {@code User} map.
-     *
-     * @return a clone of the map
-     */
-    public @NonNull Map<@NonNull I, @NonNull U> getUserMap() {
-        return new HashMap<>(this.userMap);
-    }
+  /**
+   * Gets a clone of the internal {@code User} map.
+   *
+   * @return a clone of the map
+   */
+  public @NonNull Map<@NonNull I, @NonNull U> getUserMap() {
+    return new HashMap<>(this.userMap);
+  }
 
 }

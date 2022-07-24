@@ -10,11 +10,11 @@ import java.util.UUID;
  */
 public abstract class PaperUser extends AbstractUser<UUID> {
 
-    /**
-     * @param uuid the uuid
-     */
-    public PaperUser(final @NonNull UUID uuid) {
-        super(uuid);
-    }
+  /**
+   * @param uuid the uuid
+   */
+  public PaperUser(final @NonNull UUID uuid) {
+    super(uuid);
+  }
 
 }

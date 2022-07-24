@@ -11,11 +11,11 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  */
 public abstract class AbstractCloudCommand<S, M extends CommandManager<S>> {
 
-    /**
-     * Register the command.
-     *
-     * @param commandManager the command manager
-     */
-    public abstract void register(@NonNull M commandManager);
+  /**
+   * Register the command.
+   *
+   * @param commandManager the command manager
+   */
+  public abstract void register(@NonNull M commandManager);
 
 }
