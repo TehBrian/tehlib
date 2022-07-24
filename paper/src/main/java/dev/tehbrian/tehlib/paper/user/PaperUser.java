@@ -1,6 +1,6 @@
 package dev.tehbrian.tehlib.paper.user;
 
-import dev.tehbrian.tehlib.core.user.AbstractUser;
+import dev.tehbrian.tehlib.user.AbstractUser;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.UUID;

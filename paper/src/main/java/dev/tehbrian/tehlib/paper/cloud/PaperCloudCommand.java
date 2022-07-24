@@ -1,7 +1,7 @@
 package dev.tehbrian.tehlib.paper.cloud;
 
 import cloud.commandframework.paper.PaperCommandManager;
-import dev.tehbrian.tehlib.core.cloud.AbstractCloudCommand;
+import dev.tehbrian.tehlib.cloud.AbstractCloudCommand;
 
 /**
  * A command that can be registered.

@@ -1,6 +1,6 @@
 package dev.tehbrian.tehlib.paper.user;
 
-import dev.tehbrian.tehlib.core.user.AbstractUserService;
+import dev.tehbrian.tehlib.user.AbstractUserService;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 

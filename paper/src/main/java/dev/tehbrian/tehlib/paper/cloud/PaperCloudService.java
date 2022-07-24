@@ -2,7 +2,7 @@ package dev.tehbrian.tehlib.paper.cloud;
 
 import cloud.commandframework.CommandManager;
 import cloud.commandframework.paper.PaperCommandManager;
-import dev.tehbrian.tehlib.core.cloud.AbstractCloudService;
+import dev.tehbrian.tehlib.cloud.AbstractCloudService;
 
 /**
  * Manages a {@link CommandManager} instance.

@@ -1,6 +1,6 @@
 package dev.tehbrian.tehlib.javacord.user;
 
-import dev.tehbrian.tehlib.core.user.AbstractUser;
+import dev.tehbrian.tehlib.user.AbstractUser;
 
 /**
  * Represents a user.

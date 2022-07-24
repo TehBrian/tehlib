@@ -1,6 +1,12 @@
 rootProject.name = "tehlib"
 
-projects("core", "paper", "javacord")
+projects(
+    "user",
+    "cloud",
+    "configurate",
+    "paper",
+    "javacord"
+)
 
 fun projects(vararg names: String) {
   include(*names)

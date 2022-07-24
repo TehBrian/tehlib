@@ -1,7 +1,7 @@
 package dev.tehbrian.tehlib.paper.configurate;
 
-import dev.tehbrian.tehlib.core.configurate.AbstractRawConfig;
-import dev.tehbrian.tehlib.core.configurate.ConfigurateWrapper;
+import dev.tehbrian.tehlib.configurate.AbstractRawConfig;
+import dev.tehbrian.tehlib.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
