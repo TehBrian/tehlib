@@ -11,6 +11,6 @@ dependencies {
   api(project(":tehlib-cloud"))
   api(project(":tehlib-configurate"))
 
-  api("cloud.commandframework", "cloud-javacord", "1.7.0")
+  api("cloud.commandframework", "cloud-javacord", "1.7.1")
   api("org.javacord:javacord:3.5.0")
 }
