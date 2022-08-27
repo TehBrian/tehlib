@@ -14,6 +14,6 @@ dependencies {
   api(project(":tehlib-cloud"))
   api(project(":tehlib-configurate"))
 
-  api("cloud.commandframework", "cloud-paper", "1.7.0")
+  api("cloud.commandframework", "cloud-paper", "1.7.1")
   compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
 }
