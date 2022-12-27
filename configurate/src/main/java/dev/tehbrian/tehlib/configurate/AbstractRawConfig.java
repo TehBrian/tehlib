@@ -1,6 +1,5 @@
 package dev.tehbrian.tehlib.configurate;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 
@@ -12,7 +11,7 @@ public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>>
   /**
    * @param configurateWrapper the wrapper
    */
-  public AbstractRawConfig(@NonNull final W configurateWrapper) {
+  public AbstractRawConfig(final W configurateWrapper) {
     super(configurateWrapper);
   }
 
@@ -31,7 +30,7 @@ public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>>
    *
    * @return the root node
    */
-  public @NonNull CommentedConfigurationNode rootNode() {
+  public CommentedConfigurationNode rootNode() {
     return Objects.requireNonNull(this.configurateWrapper.get(), "Root node is null");
   }
 

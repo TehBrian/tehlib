@@ -1,7 +1,5 @@
 package dev.tehbrian.tehlib.user;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 /**
  * Represents a user.
  *
@@ -12,12 +10,12 @@ public abstract class AbstractUser<I> {
   /**
    * The unique identifier.
    */
-  protected final @NonNull I uuid;
+  protected final I uuid;
 
   /**
    * @param uuid the identifier
    */
-  public AbstractUser(final @NonNull I uuid) {
+  public AbstractUser(final I uuid) {
     this.uuid = uuid;
   }
 
@@ -26,7 +24,7 @@ public abstract class AbstractUser<I> {
    *
    * @return the identifier
    */
-  public @NonNull I uuid() {
+  public I uuid() {
     return this.uuid;
   }
 

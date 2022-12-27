@@ -1,7 +1,5 @@
 package dev.tehbrian.tehlib.configurate;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface DataConfig<D> {
 
   /**
@@ -9,6 +7,6 @@ public interface DataConfig<D> {
    *
    * @return the data
    */
-  @NonNull D data();
+  D data();
 
 }

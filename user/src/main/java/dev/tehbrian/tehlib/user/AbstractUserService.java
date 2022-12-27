@@ -1,7 +1,5 @@
 package dev.tehbrian.tehlib.user;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +12,7 @@ import java.util.Map;
 public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
 
   @SuppressWarnings("CanBeFinal") // some programs may need to change the user map
-  protected @NonNull Map<@NonNull I, @NonNull U> userMap = new HashMap<>();
+  protected Map<I, U> userMap = new HashMap<>();
 
   /**
    * Gets the {@code User} associated with that {@code uuid}.
@@ -22,14 +20,14 @@ public abstract class AbstractUserService<I, U extends AbstractUser<I>> {
    * @param uuid the identifier
    * @return the {@code User}
    */
-  public abstract @NonNull U getUser(@NonNull I uuid);
+  public abstract U getUser(I uuid);
 
   /**
    * Gets a clone of the internal {@code User} map.
    *
    * @return a clone of the map
    */
-  public @NonNull Map<@NonNull I, @NonNull U> getUserMap() {
+  public Map<I, U> getUserMap() {
     return new HashMap<>(this.userMap);
   }
 

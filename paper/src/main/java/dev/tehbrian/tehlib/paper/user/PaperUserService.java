@@ -2,7 +2,6 @@ package dev.tehbrian.tehlib.paper.user;
 
 import dev.tehbrian.tehlib.user.AbstractUserService;
 import org.bukkit.entity.Player;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.UUID;
 
@@ -19,7 +18,7 @@ public abstract class PaperUserService<U extends PaperUser> extends AbstractUser
    * @param player the player
    * @return the {@code User}
    */
-  public @NonNull U getUser(final @NonNull Player player) {
+  public U getUser(final Player player) {
     return this.getUser(player.getUniqueId());
   }
 

@@ -1,7 +1,6 @@
 package dev.tehbrian.tehlib.cloud;
 
 import cloud.commandframework.CommandManager;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * A command that can be registered.
@@ -16,6 +15,6 @@ public abstract class AbstractCloudCommand<S, M extends CommandManager<S>> {
    *
    * @param commandManager the command manager
    */
-  public abstract void register(@NonNull M commandManager);
+  public abstract void register(M commandManager);
 
 }

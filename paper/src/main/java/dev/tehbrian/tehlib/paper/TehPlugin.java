@@ -6,7 +6,6 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.io.File;
 import java.util.Objects;
@@ -22,7 +21,7 @@ public abstract class TehPlugin extends JavaPlugin {
    *
    * @param listeners the listeners
    */
-  public void registerListeners(final @NonNull Listener... listeners) {
+  public void registerListeners(final Listener... listeners) {
     final PluginManager manager = this.getServer().getPluginManager();
 
     for (final Listener listener : listeners) {
@@ -36,7 +35,7 @@ public abstract class TehPlugin extends JavaPlugin {
    *
    * @param resourcePath the resource path
    */
-  public void saveResourceSilently(final @NonNull String resourcePath) {
+  public void saveResourceSilently(final String resourcePath) {
     final File outFile = new File(this.getDataFolder(), resourcePath);
 
     if (!outFile.exists()) {
@@ -59,11 +58,11 @@ public abstract class TehPlugin extends JavaPlugin {
    * @param completer the tab completer
    */
   public void registerCommand(
-      final @NonNull String name,
-      final @NonNull CommandExecutor executor,
-      final @NonNull TabCompleter completer
+      final String name,
+      final CommandExecutor executor,
+      final TabCompleter completer
   ) {
-    final @NonNull PluginCommand command = Objects.requireNonNull(this.getCommand(name));
+    final PluginCommand command = Objects.requireNonNull(this.getCommand(name));
     command.setExecutor(executor);
     command.setTabCompleter(completer);
   }
@@ -76,8 +75,8 @@ public abstract class TehPlugin extends JavaPlugin {
    * @param executor the command executor
    */
   public void registerCommand(
-      final @NonNull String name,
-      final @NonNull CommandExecutor executor
+      final String name,
+      final CommandExecutor executor
   ) {
     this.registerCommand(name, executor, new EmptyTabCompleter());
   }

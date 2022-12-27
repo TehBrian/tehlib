@@ -1,6 +1,5 @@
 package dev.tehbrian.tehlib.javacord.command.slash;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.javacord.api.DiscordApi;
 
 /**
@@ -13,7 +12,7 @@ public abstract class JavacordSlashCommand {
   /**
    * @param discordApi the discord api
    */
-  public JavacordSlashCommand(final @NonNull DiscordApi discordApi) {
+  public JavacordSlashCommand(final DiscordApi discordApi) {
     this.discordApi = discordApi;
   }
 

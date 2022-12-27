@@ -1,7 +1,6 @@
 package dev.tehbrian.tehlib.paper.user;
 
 import dev.tehbrian.tehlib.user.AbstractUser;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.UUID;
 
@@ -13,7 +12,7 @@ public abstract class PaperUser extends AbstractUser<UUID> {
   /**
    * @param uuid the uuid
    */
-  public PaperUser(final @NonNull UUID uuid) {
+  public PaperUser(final UUID uuid) {
     super(uuid);
   }
 

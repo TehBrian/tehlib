@@ -1,7 +1,6 @@
 package dev.tehbrian.tehlib.configurate;
 
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
@@ -17,7 +16,7 @@ import java.nio.file.Path;
  */
 public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigurationNode>> {
 
-  private final @NonNull Path filePath;
+  private final Path filePath;
   private final @MonotonicNonNull L loader;
 
   private CommentedConfigurationNode rootNode;
@@ -26,7 +25,7 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
    * @param filePath the file path for the config
    * @param loader   the loader
    */
-  public ConfigurateWrapper(final @NonNull Path filePath, final @NonNull L loader) {
+  public ConfigurateWrapper(final Path filePath, final L loader) {
     this.filePath = filePath;
     this.loader = loader;
   }
@@ -59,7 +58,7 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
    *
    * @return the file path
    */
-  public @NonNull Path filePath() {
+  public Path filePath() {
     return this.filePath;
   }
 

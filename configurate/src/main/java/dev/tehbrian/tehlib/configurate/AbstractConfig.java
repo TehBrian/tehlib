@@ -1,6 +1,5 @@
 package dev.tehbrian.tehlib.configurate;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.ConfigurateException;
 
 /**
@@ -10,12 +9,12 @@ import org.spongepowered.configurate.ConfigurateException;
  */
 public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> implements Config {
 
-  protected final @NonNull W configurateWrapper;
+  protected final W configurateWrapper;
 
   /**
    * @param configurateWrapper the wrapper
    */
-  public AbstractConfig(final @NonNull W configurateWrapper) {
+  public AbstractConfig(final W configurateWrapper) {
     this.configurateWrapper = configurateWrapper;
   }
 

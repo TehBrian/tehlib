@@ -5,7 +5,6 @@ import dev.tehbrian.tehlib.configurate.ConfigurateWrapper;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.spongepowered.configurate.NodePath;
 
 /**
@@ -20,7 +19,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
    * @param configurateWrapper the wrapper
    */
   public AbstractLangConfig(
-      final @NonNull W configurateWrapper
+      final W configurateWrapper
   ) {
     super(configurateWrapper);
   }

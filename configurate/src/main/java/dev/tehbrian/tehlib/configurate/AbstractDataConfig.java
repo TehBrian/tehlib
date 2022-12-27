@@ -1,6 +1,5 @@
 package dev.tehbrian.tehlib.configurate;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
@@ -15,7 +14,7 @@ public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D>
   /**
    * @param configurateWrapper the wrapper
    */
-  public AbstractDataConfig(@NonNull final W configurateWrapper) {
+  public AbstractDataConfig(final W configurateWrapper) {
     super(configurateWrapper);
   }
 
@@ -28,7 +27,7 @@ public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D>
   public void load() throws ConfigurateException {
     this.configurateWrapper.load();
     // will not be null as we called #load()
-    final @NonNull CommentedConfigurationNode rootNode = Objects.requireNonNull(this.configurateWrapper.get());
+    final CommentedConfigurationNode rootNode = Objects.requireNonNull(this.configurateWrapper.get());
     this.data = Objects.requireNonNull(rootNode.get(this.getDataClass()), "Deserialized data is null");
   }
 
@@ -39,7 +38,7 @@ public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D>
    *
    * @return the data
    */
-  public @NonNull D data() {
+  public D data() {
     return Objects.requireNonNull(this.data, "Data is null");
   }
 
