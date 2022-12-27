@@ -7,5 +7,5 @@ repositories {
 }
 
 dependencies {
-  api("org.checkerframework:checker-qual:3.24.0")
+  api("org.checkerframework:checker-qual:3.28.0")
 }

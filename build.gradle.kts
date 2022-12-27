@@ -1,5 +1,6 @@
 plugins {
-  id("net.kyori.indra.publishing.sonatype") version "2.1.1"
+  id("net.kyori.indra.publishing.sonatype") version "3.0.1"
+  id("com.github.ben-manes.versions") version "0.44.0"
 }
 
 group = "dev.tehbrian"

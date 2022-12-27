@@ -7,5 +7,5 @@ repositories {
 }
 
 dependencies {
-  api("cloud.commandframework", "cloud-core", "1.7.0")
+  api("cloud.commandframework:cloud-core:1.8.0")
 }
