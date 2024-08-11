@@ -1,7 +1,6 @@
 package dev.tehbrian.tehlib.configurate;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
-import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
@@ -37,7 +36,7 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
 	 * @return the root node
 	 * @throws NullPointerException if {@link #load()} has not been called
 	 */
-	public @NonNull CommentedConfigurationNode rootNode() {
+	public CommentedConfigurationNode rootNode() {
 		return Objects.requireNonNull(this.rootNode, "Root node is null. Did #load() fail?");
 	}
 

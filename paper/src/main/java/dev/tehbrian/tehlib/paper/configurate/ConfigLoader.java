@@ -25,7 +25,7 @@ public final class ConfigLoader {
 				this.plugin.saveResource(data.filename(), false);
 			}
 
-			final Config config = data.config();
+			final Config<?> config = data.config();
 			try {
 				config.load();
 			} catch (final ConfigurateException e) {
@@ -80,8 +80,8 @@ public final class ConfigLoader {
 		return true;
 	}
 
-	public record Loadable(String filenameBase, String filenameExt, Config config, int version) {
-		public static Loadable of(final String filename, final Config config, final int version) {
+	public record Loadable(String filenameBase, String filenameExt, Config<?> config, int version) {
+		public static Loadable of(final String filename, final Config<?> config, final int version) {
 			final var split = filename.split("\\.");
 			return new Loadable(split[0], split[1], config, version);
 		}

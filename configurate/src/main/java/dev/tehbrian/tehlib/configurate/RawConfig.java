@@ -2,7 +2,7 @@ package dev.tehbrian.tehlib.configurate;
 
 import org.spongepowered.configurate.CommentedConfigurationNode;
 
-public interface RawConfig extends Config {
+public interface RawConfig<W extends ConfigurateWrapper<?>> extends Config<W> {
 
 	/**
 	 * Gets the root node.

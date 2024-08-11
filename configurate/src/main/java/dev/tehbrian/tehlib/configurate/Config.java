@@ -5,7 +5,7 @@ import org.spongepowered.configurate.ConfigurateException;
 /**
  * Loads and holds values from a {@link ConfigurateWrapper}.
  */
-public interface Config {
+public interface Config<W extends ConfigurateWrapper<?>> {
 
 	/**
 	 * Loads values from the wrapper into memory.
@@ -19,6 +19,6 @@ public interface Config {
 	 *
 	 * @return the configurate wrapper
 	 */
-	ConfigurateWrapper<?> wrapper();
+	W wrapper();
 
 }

@@ -3,8 +3,7 @@ package dev.tehbrian.tehlib.configurate;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 
-public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>>
-		extends AbstractConfig<W> implements RawConfig {
+public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>> extends AbstractConfig<W> implements RawConfig<W> {
 
 	/**
 	 * @param configurateWrapper the wrapper

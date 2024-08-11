@@ -5,8 +5,7 @@ import org.spongepowered.configurate.ConfigurateException;
 
 import java.util.Objects;
 
-public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D>
-		extends AbstractConfig<W> implements DataConfig<D> {
+public abstract class AbstractDataConfig<W extends ConfigurateWrapper<?>, D> extends AbstractConfig<W> implements DataConfig<W, D> {
 
 	protected @Nullable D data;
 
