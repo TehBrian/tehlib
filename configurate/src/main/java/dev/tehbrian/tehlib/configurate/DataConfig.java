@@ -1,6 +1,6 @@
 package dev.tehbrian.tehlib.configurate;
 
-public interface DataConfig<D> {
+public interface DataConfig<D> extends Config {
 
   /**
    * Gets the data.

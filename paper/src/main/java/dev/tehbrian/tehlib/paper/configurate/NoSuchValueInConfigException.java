@@ -5,7 +5,7 @@ import java.io.Serial;
 /**
  * Thrown to indicate that no value was found at the given path.
  */
-public class NoSuchValueAtPathInConfigException extends RuntimeException {
+public class NoSuchValueInConfigException extends RuntimeException {
 
   @Serial
   private static final long serialVersionUID = -7199781355817557125L;
@@ -13,9 +13,7 @@ public class NoSuchValueAtPathInConfigException extends RuntimeException {
   /**
    * @param message the detail message
    */
-  public NoSuchValueAtPathInConfigException(
-      final String message
-  ) {
+  public NoSuchValueInConfigException(final String message) {
     super(message);
   }
 

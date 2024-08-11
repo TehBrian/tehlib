@@ -3,8 +3,6 @@ package dev.tehbrian.tehlib.configurate;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 
-import java.util.Objects;
-
 public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>>
     extends AbstractConfig<W> implements RawConfig {
 
@@ -16,13 +14,13 @@ public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>>
   }
 
   /**
-   * Loads the values from the {@link #configurateWrapper} into memory.
+   * Loads values from the wrapper into memory.
    *
    * @throws ConfigurateException if something goes wrong
    */
   @Override
   public void load() throws ConfigurateException {
-    this.configurateWrapper.load();
+    this.wrapper.load();
   }
 
   /**
@@ -31,7 +29,7 @@ public abstract class AbstractRawConfig<W extends ConfigurateWrapper<?>>
    * @return the root node
    */
   public CommentedConfigurationNode rootNode() {
-    return Objects.requireNonNull(this.configurateWrapper.get(), "Root node is null");
+    return this.wrapper.rootNode();
   }
 
 }

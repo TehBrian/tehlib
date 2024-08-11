@@ -9,17 +9,17 @@ import org.spongepowered.configurate.ConfigurateException;
  */
 public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> implements Config {
 
-  protected final W configurateWrapper;
+  protected final W wrapper;
 
   /**
-   * @param configurateWrapper the wrapper
+   * @param wrapper the wrapper
    */
-  public AbstractConfig(final W configurateWrapper) {
-    this.configurateWrapper = configurateWrapper;
+  public AbstractConfig(final W wrapper) {
+    this.wrapper = wrapper;
   }
 
   /**
-   * Loads the values from the {@link #configurateWrapper} into memory.
+   * Loads values from the wrapper into memory.
    *
    * @throws ConfigurateException if something goes wrong
    */
@@ -30,8 +30,8 @@ public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> implements
    *
    * @return the configurate wrapper
    */
-  public W configurateWrapper() {
-    return this.configurateWrapper;
+  public W wrapper() {
+    return this.wrapper;
   }
 
 }

@@ -1,12 +1,13 @@
 package dev.tehbrian.tehlib.configurate;
 
-import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
 
 import java.nio.file.Path;
+import java.util.Objects;
 
 /**
  * Wraps around a {@link ConfigurationLoader} and provides methods for loading,
@@ -16,27 +17,28 @@ import java.nio.file.Path;
  */
 public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigurationNode>> {
 
-  private final Path filePath;
-  private final @MonotonicNonNull L loader;
+  private final Path path;
+  private final L loader;
 
-  private CommentedConfigurationNode rootNode;
+  private @Nullable CommentedConfigurationNode rootNode;
 
   /**
-   * @param filePath the file path for the config
-   * @param loader   the loader
+   * @param path   the path for the config
+   * @param loader the loader
    */
-  public ConfigurateWrapper(final Path filePath, final L loader) {
-    this.filePath = filePath;
+  public ConfigurateWrapper(final Path path, final L loader) {
+    this.path = path;
     this.loader = loader;
   }
 
   /**
-   * Gets the root node. Will be null if {@link #load()} has not been called.
+   * Gets the root node.
    *
    * @return the root node
+   * @throws NullPointerException if {@link #load()} has not been called
    */
-  public @Nullable CommentedConfigurationNode get() {
-    return this.rootNode;
+  public @NonNull CommentedConfigurationNode rootNode() {
+    return Objects.requireNonNull(this.rootNode, "Root node is null. Did #load() fail?");
   }
 
   /**
@@ -50,16 +52,16 @@ public class ConfigurateWrapper<L extends ConfigurationLoader<CommentedConfigura
    * Saves the root node to the file system.
    */
   public void save() throws ConfigurateException {
-    this.loader.save(this.rootNode);
+    this.loader.save(this.rootNode());
   }
 
   /**
-   * Gets the file path that the loader will load from.
+   * Gets the path that the loader will load from and save to.
    *
-   * @return the file path
+   * @return the path
    */
-  public Path filePath() {
-    return this.filePath;
+  public Path path() {
+    return this.path;
   }
 
 }

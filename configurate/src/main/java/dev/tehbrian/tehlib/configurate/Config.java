@@ -8,7 +8,7 @@ import org.spongepowered.configurate.ConfigurateException;
 public interface Config {
 
   /**
-   * Loads the values into memory.
+   * Loads values from the wrapper into memory.
    *
    * @throws ConfigurateException if something goes wrong
    */
@@ -19,6 +19,6 @@ public interface Config {
    *
    * @return the configurate wrapper
    */
-  ConfigurateWrapper<?> configurateWrapper();
+  ConfigurateWrapper<?> wrapper();
 
 }

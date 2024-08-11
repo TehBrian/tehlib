@@ -18,51 +18,49 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
   /**
    * @param configurateWrapper the wrapper
    */
-  public AbstractLangConfig(
-      final W configurateWrapper
-  ) {
+  public AbstractLangConfig(final W configurateWrapper) {
     super(configurateWrapper);
   }
 
   /**
-   * Gets the value for {@code path} from {@link #configurateWrapper}
+   * Gets the value for {@code path} from {@link #wrapper}
    * and parses it using {@link MiniMessage}.
    *
    * @param path        the config path
    * @param tagResolver the tag resolver
    * @return the component
-   * @throws NoSuchValueAtPathInConfigException if there is no value found at the specified path
+   * @throws NoSuchValueInConfigException if there is no value found at the specified path
    */
-  public Component c(final NodePath path, final TagResolver tagResolver) throws NoSuchValueAtPathInConfigException {
+  public Component c(final NodePath path, final TagResolver tagResolver) throws NoSuchValueInConfigException {
     return MiniMessage.miniMessage().deserialize(this.getAndVerifyString(path), tagResolver);
   }
 
   /**
-   * Gets the value for {@code path} from {@link #configurateWrapper}
+   * Gets the value for {@code path} from {@link #wrapper}
    * and parses it using {@link MiniMessage}.
    *
    * @param path the config path
    * @return the component
-   * @throws NoSuchValueAtPathInConfigException if there is no value found at the specified path
+   * @throws NoSuchValueInConfigException if there is no value found at the specified path
    */
-  public Component c(final NodePath path) throws NoSuchValueAtPathInConfigException {
+  public Component c(final NodePath path) throws NoSuchValueInConfigException {
     return this.c(path, TagResolver.empty());
   }
 
   /**
-   * Gets the value for {@code path} from {@link #configurateWrapper}
+   * Gets the value for {@code path} from {@link #wrapper}
    * and verifies that it is not null.
    *
    * @param path the path
    * @return the verified string
-   * @throws NoSuchValueAtPathInConfigException if there is no value found at the specified path
+   * @throws NoSuchValueInConfigException if there is no value found at the specified path
    */
-  protected String getAndVerifyString(final NodePath path) throws NoSuchValueAtPathInConfigException {
+  protected String getAndVerifyString(final NodePath path) throws NoSuchValueInConfigException {
     final String rawValue = this.rootNode().node(path).getString();
 
     if (rawValue == null) {
-      throw new NoSuchValueAtPathInConfigException("Attempted to get value at path " + path + " in config "
-          + configurateWrapper.filePath().getFileName() + " but found nothing.");
+      throw new NoSuchValueInConfigException("Attempted to get value at path " + path + " in config "
+          + wrapper.path().getFileName() + " but found nothing.");
     }
 
     return rawValue;

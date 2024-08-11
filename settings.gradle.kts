@@ -1,8 +1,8 @@
 rootProject.name = "tehlib"
 
 projects(
-    "configurate",
-    "paper",
+  "configurate",
+  "paper",
 )
 
 fun projects(vararg names: String) {
