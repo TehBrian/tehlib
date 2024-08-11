@@ -38,7 +38,7 @@ public final class ConfigLoader {
 				return false;
 			}
 
-			if (data.version() == 0) {
+			if (!data.versioned()) {
 				// skip version check.
 				continue;
 			}
@@ -80,14 +80,53 @@ public final class ConfigLoader {
 		return true;
 	}
 
-	public record Loadable(String filenameBase, String filenameExt, Config<?> config, int version) {
-		public static Loadable of(final String filename, final Config<?> config, final int version) {
+	public static final class Loadable {
+		private final String filenameBase;
+		private final String filenameExt;
+		private final Config<?> config;
+		private final int version;
+
+		private Loadable(
+				final String filenameBase, final String filenameExt,
+				final Config<?> config, final int version
+		) {
+			this.filenameBase = filenameBase;
+			this.filenameExt = filenameExt;
+			this.config = config;
+			this.version = version;
+		}
+
+		public static Loadable of(final String filename, final Config<?> config) {
+			return ofVersioned(filename, config, -1);
+		}
+
+		public static Loadable ofVersioned(final String filename, final Config<?> config, final int version) {
 			final var split = filename.split("\\.");
 			return new Loadable(split[0], split[1], config, version);
 		}
 
+		public String filenameBase() {
+			return this.filenameBase;
+		}
+
+		public String filenameExt() {
+			return this.filenameExt;
+		}
+
+		public Config<?> config() {
+			return this.config;
+		}
+
+		public int version() {
+			return this.version;
+		}
+
 		public String filename() {
 			return this.filenameBase() + "." + this.filenameExt();
+		}
+
+		public boolean versioned() {
+			return this.version() > 0;
 		}
 	}
 }
