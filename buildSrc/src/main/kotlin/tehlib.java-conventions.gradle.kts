@@ -23,12 +23,20 @@ indra {
 
   configurePublications {
     pom {
+      url.set("github.com/TehBrian/tehlib")
+
       developers {
         developer {
           id.set("TehBrian")
           url.set("https://tehbrian.xyz")
           email.set("tehbrian@proton.me")
         }
+      }
+
+      scm {
+        connection.set("scm:git:git://github.com/TehBrian/tehlib.git")
+        developerConnection.set("scm:git:ssh://github.com/TehBrian/tehlib.git")
+        url.set("github.com/TehBrian/tehlib.git")
       }
     }
   }
