@@ -16,7 +16,16 @@ public final class ConfigLoader {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Loads the given list of configuration.
+	 *
+	 * <p>If there is an error while loading a config file, the exception is logged
+	 * and the file is skipped.</p>
+	 *
+	 * @return whether all config files were successfully loaded
+	 */
 	public boolean load(final List<Loadable> toLoad) {
+		boolean successful = true;
 		for (final Loadable data : toLoad) {
 			final Path dataPath = this.plugin.getDataPath();
 			final Path savePath = dataPath.resolve(data.filename());
@@ -30,12 +39,11 @@ public final class ConfigLoader {
 				config.load();
 			} catch (final ConfigurateException e) {
 				this.plugin.getSLF4JLogger().error(
-						"Exception caught during config load for {}",
+						"An error occurred while loading config file {}. Please ensure that the file is valid.",
 						config.wrapper().path()
 				);
-				this.plugin.getSLF4JLogger().error("Please check your config.");
 				this.plugin.getSLF4JLogger().error("Printing stack trace:", e);
-				return false;
+				successful = false;
 			}
 
 			if (!data.versioned()) {
@@ -69,15 +77,17 @@ public final class ConfigLoader {
 				} catch (final IOException e) {
 					this.plugin.getSLF4JLogger().error("Failed to move the old config.");
 					this.plugin.getSLF4JLogger().error("Printing stack trace:", e);
-					return false;
+					successful = false;
 				}
 
 				this.plugin.saveResource(data.filename(), false);
 			}
 		}
 
-		this.plugin.getSLF4JLogger().info("Successfully loaded configuration.");
-		return true;
+		if (successful) {
+			this.plugin.getSLF4JLogger().info("Successfully loaded configuration.");
+		}
+		return successful;
 	}
 
 	public static final class Loadable {
