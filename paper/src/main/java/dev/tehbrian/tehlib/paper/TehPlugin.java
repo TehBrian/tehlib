@@ -7,11 +7,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Objects;
 
 /**
- * Useful utility methods for the main plugin class. Extend as you would
+ * Utility methods for the main plugin class. Extend as you would
  * normally would {@code JavaPlugin}.
  */
 public abstract class TehPlugin extends JavaPlugin {
@@ -23,7 +24,6 @@ public abstract class TehPlugin extends JavaPlugin {
 	 */
 	public void registerListeners(final Listener... listeners) {
 		final PluginManager manager = this.getServer().getPluginManager();
-
 		for (final Listener listener : listeners) {
 			manager.registerEvents(listener, this);
 		}
@@ -33,13 +33,12 @@ public abstract class TehPlugin extends JavaPlugin {
 	 * Checks whether the resource already exists before calling
 	 * {@link #saveResource(String, boolean)}.
 	 *
-	 * @param resourcePath the resource path
+	 * @param filename the resource filename
 	 */
-	public void saveResourceSilently(final String resourcePath) {
-		final File outFile = new File(this.getDataFolder(), resourcePath);
-
-		if (!outFile.exists()) {
-			this.saveResource(resourcePath, false);
+	public void saveResourceSilently(final String filename) {
+		final Path outPath = this.getDataPath().resolve(filename);
+		if (!Files.exists(outPath)) {
+			this.saveResource(filename, false);
 		}
 	}
 
@@ -47,7 +46,7 @@ public abstract class TehPlugin extends JavaPlugin {
 	 * Disables this plugin.
 	 */
 	public void disableSelf() {
-		this.setEnabled(false);
+		this.getServer().getPluginManager().disablePlugin(this);
 	}
 
 	/**

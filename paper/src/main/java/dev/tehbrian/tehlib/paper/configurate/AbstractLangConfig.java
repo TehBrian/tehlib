@@ -44,7 +44,7 @@ public abstract class AbstractLangConfig<W extends ConfigurateWrapper<?>> extend
 	 * @throws NoSuchValueInConfigException if there is no value found at the specified path
 	 */
 	public Component c(final NodePath path) throws NoSuchValueInConfigException {
-		return this.c(path, TagResolver.empty());
+		return MiniMessage.miniMessage().deserialize(this.getAndVerifyString(path));
 	}
 
 	/**
