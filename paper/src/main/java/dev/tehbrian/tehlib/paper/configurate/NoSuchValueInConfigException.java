@@ -7,14 +7,14 @@ import java.io.Serial;
  */
 public class NoSuchValueInConfigException extends RuntimeException {
 
-  @Serial
-  private static final long serialVersionUID = -7199781355817557125L;
+	@Serial
+	private static final long serialVersionUID = -7199781355817557125L;
 
-  /**
-   * @param message the detail message
-   */
-  public NoSuchValueInConfigException(final String message) {
-    super(message);
-  }
+	/**
+	 * @param message the detail message
+	 */
+	public NoSuchValueInConfigException(final String message) {
+		super(message);
+	}
 
 }

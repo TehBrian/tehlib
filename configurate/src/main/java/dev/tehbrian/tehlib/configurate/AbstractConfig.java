@@ -9,29 +9,29 @@ import org.spongepowered.configurate.ConfigurateException;
  */
 public abstract class AbstractConfig<W extends ConfigurateWrapper<?>> implements Config {
 
-  protected final W wrapper;
+	protected final W wrapper;
 
-  /**
-   * @param wrapper the wrapper
-   */
-  public AbstractConfig(final W wrapper) {
-    this.wrapper = wrapper;
-  }
+	/**
+	 * @param wrapper the wrapper
+	 */
+	public AbstractConfig(final W wrapper) {
+		this.wrapper = wrapper;
+	}
 
-  /**
-   * Loads values from the wrapper into memory.
-   *
-   * @throws ConfigurateException if something goes wrong
-   */
-  public abstract void load() throws ConfigurateException;
+	/**
+	 * Loads values from the wrapper into memory.
+	 *
+	 * @throws ConfigurateException if something goes wrong
+	 */
+	public abstract void load() throws ConfigurateException;
 
-  /**
-   * Gets the underlying configurate wrapper.
-   *
-   * @return the configurate wrapper
-   */
-  public W wrapper() {
-    return this.wrapper;
-  }
+	/**
+	 * Gets the underlying configurate wrapper.
+	 *
+	 * @return the configurate wrapper
+	 */
+	public W wrapper() {
+		return this.wrapper;
+	}
 
 }

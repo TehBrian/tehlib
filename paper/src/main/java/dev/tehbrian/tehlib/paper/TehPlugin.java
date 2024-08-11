@@ -16,69 +16,69 @@ import java.util.Objects;
  */
 public abstract class TehPlugin extends JavaPlugin {
 
-  /**
-   * Registers listeners to this plugin.
-   *
-   * @param listeners the listeners
-   */
-  public void registerListeners(final Listener... listeners) {
-    final PluginManager manager = this.getServer().getPluginManager();
+	/**
+	 * Registers listeners to this plugin.
+	 *
+	 * @param listeners the listeners
+	 */
+	public void registerListeners(final Listener... listeners) {
+		final PluginManager manager = this.getServer().getPluginManager();
 
-    for (final Listener listener : listeners) {
-      manager.registerEvents(listener, this);
-    }
-  }
+		for (final Listener listener : listeners) {
+			manager.registerEvents(listener, this);
+		}
+	}
 
-  /**
-   * Checks whether the resource already exists before calling
-   * {@link #saveResource(String, boolean)}.
-   *
-   * @param resourcePath the resource path
-   */
-  public void saveResourceSilently(final String resourcePath) {
-    final File outFile = new File(this.getDataFolder(), resourcePath);
+	/**
+	 * Checks whether the resource already exists before calling
+	 * {@link #saveResource(String, boolean)}.
+	 *
+	 * @param resourcePath the resource path
+	 */
+	public void saveResourceSilently(final String resourcePath) {
+		final File outFile = new File(this.getDataFolder(), resourcePath);
 
-    if (!outFile.exists()) {
-      this.saveResource(resourcePath, false);
-    }
-  }
+		if (!outFile.exists()) {
+			this.saveResource(resourcePath, false);
+		}
+	}
 
-  /**
-   * Disables this plugin.
-   */
-  public void disableSelf() {
-    this.setEnabled(false);
-  }
+	/**
+	 * Disables this plugin.
+	 */
+	public void disableSelf() {
+		this.setEnabled(false);
+	}
 
-  /**
-   * Registers a command to this plugin.
-   *
-   * @param name      the command name
-   * @param executor  the command executor
-   * @param completer the tab completer
-   */
-  public void registerCommand(
-      final String name,
-      final CommandExecutor executor,
-      final TabCompleter completer
-  ) {
-    final PluginCommand command = Objects.requireNonNull(this.getCommand(name));
-    command.setExecutor(executor);
-    command.setTabCompleter(completer);
-  }
+	/**
+	 * Registers a command to this plugin.
+	 *
+	 * @param name      the command name
+	 * @param executor  the command executor
+	 * @param completer the tab completer
+	 */
+	public void registerCommand(
+			final String name,
+			final CommandExecutor executor,
+			final TabCompleter completer
+	) {
+		final PluginCommand command = Objects.requireNonNull(this.getCommand(name));
+		command.setExecutor(executor);
+		command.setTabCompleter(completer);
+	}
 
-  /**
-   * Registers a command to this plugin with {@link EmptyTabCompleter}
-   * as the tab completer.
-   *
-   * @param name     the command name
-   * @param executor the command executor
-   */
-  public void registerCommand(
-      final String name,
-      final CommandExecutor executor
-  ) {
-    this.registerCommand(name, executor, new EmptyTabCompleter());
-  }
+	/**
+	 * Registers a command to this plugin with {@link EmptyTabCompleter}
+	 * as the tab completer.
+	 *
+	 * @param name     the command name
+	 * @param executor the command executor
+	 */
+	public void registerCommand(
+			final String name,
+			final CommandExecutor executor
+	) {
+		this.registerCommand(name, executor, new EmptyTabCompleter());
+	}
 
 }

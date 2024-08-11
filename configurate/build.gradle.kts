@@ -1,11 +1,11 @@
 plugins {
-  id("tehlib.java-conventions")
+	id("tehlib.java-conventions")
 }
 
 repositories {
-  mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-  api("org.spongepowered:configurate-core:4.1.2")
+	api("org.spongepowered:configurate-core:4.1.2")
 }
