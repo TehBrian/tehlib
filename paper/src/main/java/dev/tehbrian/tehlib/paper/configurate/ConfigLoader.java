@@ -87,7 +87,7 @@ public final class ConfigLoader {
 		}
 
 		public String filename() {
-			return filenameBase + "." + filenameExt;
+			return this.filenameBase() + "." + this.filenameExt();
 		}
 	}
 }

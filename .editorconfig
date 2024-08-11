@@ -611,7 +611,7 @@ ij_typescript_while_brace_force = never
 ij_typescript_while_on_new_line = false
 ij_typescript_wrap_comments = false
 
-[{*.bash, *.sh, *.zsh}]
+[{*.bash,*.sh,*.zsh}]
 ij_shell_binary_ops_start_line = false
 ij_shell_keep_column_alignment_padding = false
 ij_shell_minify_program = false
@@ -619,7 +619,7 @@ ij_shell_redirect_followed_by_space = false
 ij_shell_switch_cases_indented = false
 ij_shell_use_unix_line_separator = true
 
-[{*.cjs, *.js}]
+[{*.cjs,*.js}]
 ij_javascript_align_imports = false
 ij_javascript_align_multiline_array_initializer_expression = false
 ij_javascript_align_multiline_binary_operation = false
@@ -788,10 +788,10 @@ ij_javascript_while_brace_force = never
 ij_javascript_while_on_new_line = false
 ij_javascript_wrap_comments = false
 
-[{*.ft, *.vm, *.vsl}]
+[{*.ft,*.vm,*.vsl}]
 ij_vtl_keep_indents_on_empty_lines = false
 
-[{*.gant, *.gradle, *.groovy, *.gy}]
+[{*.gant,*.gradle,*.groovy,*.gy}]
 ij_groovy_align_group_field_declarations = false
 ij_groovy_align_multiline_array_initializer_expression = false
 ij_groovy_align_multiline_assignment = false
@@ -1032,7 +1032,7 @@ ij_http-request_method_parameters_wrap = split_into_lines
 ij_http-request_space_before_comma = true
 ij_http-request_spaces_around_assignment_operators = true
 
-[{*.kt, *.kts}]
+[{*.kt,*.kts}]
 ij_kotlin_align_in_columns_case_branch = false
 ij_kotlin_align_multiline_binary_operation = false
 ij_kotlin_align_multiline_extends_list = false
@@ -1055,7 +1055,7 @@ ij_kotlin_class_annotation_wrap = split_into_lines
 ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
 ij_kotlin_continuation_indent_for_chained_calls = true
 ij_kotlin_continuation_indent_for_expression_bodies = true
-ij_kotlin_continuation_indent_in_argument_lists = true
+ij_kotlin_continuation_indent_in_argument_lists = false
 ij_kotlin_continuation_indent_in_elvis = true
 ij_kotlin_continuation_indent_in_if_conditions = true
 ij_kotlin_continuation_indent_in_parameter_lists = true
@@ -1129,7 +1129,7 @@ ij_lua_space_after_comma = true
 ij_lua_space_before_comma = false
 ij_lua_spaces_around_assignment_operators = true
 
-[{*.markdown, *.md}]
+[{*.markdown,*.md}]
 ij_markdown_force_one_space_after_blockquote_symbol = true
 ij_markdown_force_one_space_after_header_symbol = true
 ij_markdown_force_one_space_after_list_bullet = true
@@ -1161,7 +1161,7 @@ ij_prototext_spaces_within_brackets = false
 [{*.toml,Cargo.lock,Cargo.toml.orig,Gopkg.lock,Pipfile,poetry.lock}]
 ij_toml_keep_indents_on_empty_lines = false
 
-[{*.yaml, *.yml}]
+[{*.yaml,*.yml}]
 ij_yaml_align_values_properties = do_not_align
 ij_yaml_autoinsert_sequence_marker = true
 ij_yaml_block_mapping_on_new_line = false
