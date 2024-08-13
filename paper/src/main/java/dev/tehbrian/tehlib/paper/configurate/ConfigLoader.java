@@ -136,7 +136,7 @@ public final class ConfigLoader {
 		}
 
 		public boolean versioned() {
-			return this.version() > 0;
+			return this.version() >= 0; // versions *may* start at 0.
 		}
 	}
 }
