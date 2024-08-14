@@ -3,5 +3,5 @@ plugins {
 }
 
 group = "dev.tehbrian"
-version = "0.5.0"
+version = "0.6.0"
 description = "Some small, helpful utilities."
