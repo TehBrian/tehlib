@@ -10,7 +10,7 @@ version = rootProject.version
 description = rootProject.description
 
 dependencies {
-	implementation("org.jspecify:jspecify:1.0.0")
+	compileOnly("org.jspecify:jspecify:1.0.0")
 }
 
 indra {
