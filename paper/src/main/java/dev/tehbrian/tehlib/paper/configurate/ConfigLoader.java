@@ -44,6 +44,7 @@ public final class ConfigLoader {
 				);
 				this.plugin.getSLF4JLogger().error("Printing stack trace:", e);
 				successful = false;
+				continue;
 			}
 
 			if (!data.versioned()) {
@@ -78,6 +79,7 @@ public final class ConfigLoader {
 					this.plugin.getSLF4JLogger().error("Failed to move the old config.");
 					this.plugin.getSLF4JLogger().error("Printing stack trace:", e);
 					successful = false;
+					continue;
 				}
 
 				this.plugin.saveResource(data.filename(), false);
